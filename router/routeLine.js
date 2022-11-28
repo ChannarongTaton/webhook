@@ -16,25 +16,6 @@ const config = {
 
 const lineClient = new line.Client(config)
 
-cron.schedule('*/2 * * * *', function() {
-    let d = new Date(); //แสดงวันที่และเวลา 2018-5-31 16:30:00
-    let hour = d.getHours();
-    hour = (hour < 10 ? "0" : "") + hour;
-    let min = d.getMinutes();
-    min = (min < 10 ? "0" : "") + min;
-    let sec = d.getSeconds();
-    sec = (sec < 10 ? "0" : "") + sec;
-
-    console.log(hour + ":" + min + ":" + sec);
-    console.log("---------------------");
-    lineClient.pushMessage(`${process.env.USER_ID_TATON}`, 
-        {
-            "type": "text",
-            "text": `${date}`,
-        }
-        )
-})
-
 router.use(async (req, res, next) => {
     const events = req.body.events
     console.log(events);
