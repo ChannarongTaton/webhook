@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.end()
 })
 app.use('/webhookHome', lineRoute)
-app.use('/cron', cron)
+app.get('/cron', cron)
 const port = 3030;
 
 app.listen(port,() => {
