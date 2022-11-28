@@ -18,7 +18,7 @@ router.use((req, res) => {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
         })
-        // lineClient.pushMessage(`${process.env.USER_ID_TATON}`,mainFlex)
+        lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
     }
     res.send()
 })
