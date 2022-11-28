@@ -15,11 +15,7 @@ const config = {
 }
 
 const lineClient = new line.Client(config)
-let date = new Date(Date.now()).toLocaleString(); //แสดงวันที่และเวลา 2018-5-31 16:30:00
-console.log("---------------------");
-console.log(`Running Cron Job ${date}`);;
-cron.schedule('*/1 * * * *', function() {
-    let d = new Date(); //แสดงวันที่และเวลา 2018-5-31 16:30:00
+let d = new Date(); //แสดงวันที่และเวลา 2018-5-31 16:30:00
     let hour = d.getHours();
     hour = (hour < 10 ? "0" : "") + hour;
     let min = d.getMinutes();
@@ -37,7 +33,26 @@ cron.schedule('*/1 * * * *', function() {
         }
         )
     }
-})
+// cron.schedule('*/1 * * * *', function() {
+//     let d = new Date(); //แสดงวันที่และเวลา 2018-5-31 16:30:00
+//     let hour = d.getHours();
+//     hour = (hour < 10 ? "0" : "") + hour;
+//     let min = d.getMinutes();
+//     min = (min < 10 ? "0" : "") + min;
+//     let sec = d.getSeconds();
+//     sec = (sec < 10 ? "0" : "") + sec;
+
+//     console.log(hour + ":" + min + ":" + sec);
+//     console.log("---------------------");
+//     if(hour==02&&min==23){
+//         lineClient.pushMessage(`${process.env.USER_ID_TATON}`, 
+//         {
+//             "type": "text",
+//             "text": `${date}`,
+//         }
+//         )
+//     }
+// })
 
 router.use(async (req, res, next) => {
     const events = req.body.events
