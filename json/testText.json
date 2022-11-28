@@ -1,0 +1,70 @@
+{
+    "type": "flex",
+    "altText": "แจ้งเตือนการกินยา",
+    "contents": {
+    "type": "bubble",
+    "direction": "ltr",
+    "header": {
+    "type": "box",
+    "layout": "vertical",
+    "backgroundColor": "#006CFFFF",
+    "contents": [
+        {
+        "type": "text",
+        "text": "วันนี้กินยารึยัง?",
+        "weight": "bold",
+        "color": "#FFFFFFFF",
+        "align": "center",
+        "contents": []
+        }
+    ]
+    },
+    "hero": {
+    "type": "image",
+    "url": "https://cloud.ex10.tech/public/filestore/000051-75c9a8a6-6a8d-11ed-bd62-3e71409b01a1.jpg",
+    "size": "full",
+    "aspectRatio": "1.51:1",
+    "aspectMode": "fit"
+    },
+    "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+        {
+        "type": "text",
+        "text": "<3",
+        "weight": "bold",
+        "align": "center",
+        "contents": []
+        }
+    ]
+    }
+},
+"sender": {
+        "name": "น้องต้น",
+        "iconUrl": "https://cloud.ex10.tech/public/filestore/sender-42eb0259-6b3f-11ed-9be1-aa45cb77b437.jpg"
+        },
+"quickReply": {
+    "items": [
+        {
+        "type": "action",
+        "imageUrl": "https://cloud.ex10.tech/public/filestore/phil-701ef810-6b42-11ed-a284-ca2e20c48299.png",
+        "action": {
+            "type": "message",
+            "label": "กินยาเรียบร้อย",
+            "text": "กินแล้วค้าบบบ"
+        }
+        },
+        {
+        "type": "action",
+        "imageUrl": "https://cloud.ex10.tech/public/filestore/next-time-760a621d-6b42-11ed-a284-ca2e20c48299.jpg",
+        "action": {
+            "type": "message",
+            "label": "ยังไม่ได้กิน",
+            "text": "ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ"
+        }
+        }
+    ]
+    }
+
+}
