@@ -35,7 +35,7 @@ var currentTime = formatter.format(new Date());
 console.log("3. "+currentTime+"\n4. "+localTime);
 console.log(currentTime.length);
 let splitTime = currentTime.split('', 2)
-if(splitTime[0]+splitTime[1] === '01') {
+if(splitTime[0] === '1') {
     console.log(true);
 } else {
     console.log(false);
@@ -49,7 +49,7 @@ router.use( async (req, res) => {
     //     "type": "text",
     //     "text": `ตื่นมาแจ้งเตือนแล้ว`,
     // })
-    if(req.method == 'GET' && splitTime[0]+splitTime[1] == '01') {
+    if(req.method == 'GET' && splitTime[0] == '1') {
         console.log(`จาก ${req.method}`);
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
