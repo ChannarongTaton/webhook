@@ -25,16 +25,17 @@ router.use((req, res) => {
     //     "text": `ตื่นมาแจ้งเตือนแล้ว`,
     // })
     if(req.method == 'GET') {
-        lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
+        console.log(hour + ":" + min + ":" + sec);
+        res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
+        return lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
         }).then(response => {
-            console.log(response);
+            lineClient.pushMessage(`${process.env.USER_ID_TATON}`,mainFlex)
         }).catch(err => {
             console.log(err);
         })
-        // lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
     }
     res.json({message:"HELLO"})
 })
