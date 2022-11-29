@@ -25,10 +25,14 @@ router.use((req, res) => {
     //     "text": `ตื่นมาแจ้งเตือนแล้ว`,
     // })
     if(req.method == 'GET') {
-        return lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
+        lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
+        }).then(response => {
+            console.log(response);
+        }).catch(err => {
+            console.log(err);
         })
         // lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
     }
