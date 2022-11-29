@@ -32,7 +32,7 @@ var formatter = new Intl.DateTimeFormat([], options);
 var UTCTime = date;
 var localTime = formatter.format(new Date(UTCTime));
 var currentTime = formatter.format(new Date());
-// console.log("3. "+currentTime+"\n4. "+localTime);
+console.log("3. "+currentTime+"\n4. "+localTime);
 console.log(currentTime.length);
 let splitTime = currentTime.split('', 2)
 if(splitTime[0]+splitTime[1] === '01') {
