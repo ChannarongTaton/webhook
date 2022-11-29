@@ -24,21 +24,19 @@ router.use( async (req, res) => {
     //     "type": "text",
     //     "text": `ตื่นมาแจ้งเตือนแล้ว`,
     // })
-    if(req.method == 'POST') {
+    if(req.method == 'GET') {
         console.log(`จาก ${req.method}`);
         console.log(hour + ":" + min + ":" + sec);
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
-        }).then(response => {
-            lineClient.pushMessage(`${process.env.USER_ID_TATON}`,mainFlex)
-        }).catch(err => {
-            console.log(err);
         })
+        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, mainFlex)
         res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
+    } else {
+        res.json({message:"HELLO"})
     }
-    res.json({message:"HELLO"})
 })
 
 
