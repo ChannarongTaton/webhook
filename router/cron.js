@@ -25,6 +25,9 @@ router.use((req, res) => {
     //     "text": `ตื่นมาแจ้งเตือนแล้ว`,
     // })
     if(req.method == 'GET') {
+        console.log(`${req.method}`);
+    } else {
+        console.log(`จาก ${req.method}`);
         console.log(hour + ":" + min + ":" + sec);
         res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
         return lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
