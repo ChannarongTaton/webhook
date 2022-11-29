@@ -13,20 +13,23 @@ const lineClient = new line.Client(config)
 router.use((req, res) => {
     console.log(req.method);
     console.log(req.headers);
-    lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
-        {
-            "type": "text",
-            "text": `ตื่นมาแจ้งเตือนแล้ว`,
-        })
-    if(req.method == 'GET') {
-        console.log(req.method);
+    setTimeout(() => {
+        console.log("ทำงานหลังจาก 5 วินาที");
         lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
         })
-        // lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
-    }
+    }, 5000);
+    // if(req.method == 'GET') {
+    //     console.log(req.method);
+    //     lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
+    //     {
+    //         "type": "text",
+    //         "text": `ตื่นมาแจ้งเตือนแล้ว`,
+    //     })
+    //     // lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
+    // }
     res.json({message:"HELLO"})
 })
 
