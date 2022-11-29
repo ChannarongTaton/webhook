@@ -12,15 +12,24 @@ const config = {
 const lineClient = new line.Client(config)
 router.use((req, res) => {
     console.log(req.method);
-    if(req.method == 'GET') {
+    if(req.headers == 'x-cyclic'){
+        console.log(req.headers);
         lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
         })
-        lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
     }
-    res.send()
+    if(req.method == 'GET') {
+        console.log(req.method);
+        lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
+        {
+            "type": "text",
+            "text": `ตื่นมาแจ้งเตือนแล้ว`,
+        })
+        // lineClient.pushMessage(`${process.env.USER_ID_BABE}`,mainFlex)
+    }
+    res.json({message:"HELLO"})
 })
 
 
