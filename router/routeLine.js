@@ -18,7 +18,7 @@ const lineClient = new line.Client(config)
 
 router.use((req, res, next) => {
     const events = req.body.events
-    console.log(event);
+    console.log(events);
     events.forEach(async event => {
         if(event.type === "message") {
             if (event.message.type !== 'text') {
