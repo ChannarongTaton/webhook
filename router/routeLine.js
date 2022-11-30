@@ -26,16 +26,16 @@ router.use((req, res, next) => {
             } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
                 await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
                 await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
-                res.json({ message : "กินแล้วค้าบบบ"})
+                res.send()
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
                 await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
                 await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
-                res.json({ message : "ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ"})
+                res.send({ message : "ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ"})
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
                 await lineClient.replyMessage(event.replyToken, randomPicture())
             } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
                 await lineClient.replyMessage(event.replyToken, randomPicture())
-                res.json({ message : "รูป ตาต้น"})
+                res.send({ message : "รูป ตาต้น"})
             }
         } else {
             res.json({message:"HELLO"})
