@@ -23,13 +23,16 @@ router.use(async (req, res, next) => {
         if(event.type === "message") {
             if (event.message.type !== 'text') {
                 return
-            } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'กินแล้วค้าบบบ') {
+            } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
                 await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
-                await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
+                .then(response => {
+                    return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
+                })
                 res.send(event.message.text)
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
-                await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
-                await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
+                await lineClient.replyMessage(event.replyToken, sendLaterTotaton).then(response => {
+                    return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
+                })
                 res.send(event.message.text)
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
                 await lineClient.replyMessage(event.replyToken, randomPicture())
