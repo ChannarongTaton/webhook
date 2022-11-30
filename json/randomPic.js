@@ -3,7 +3,21 @@ const arraypic = [
     'https://cloud.ex10.tech/public/filestore/000005-757502c4-6bec-11ed-9e09-66fa461cc060.jpg', //รูปจวย
     'https://cloud.ex10.tech/public/filestore/000050-7e63049c-6bec-11ed-9e09-66fa461cc060.jpg', //รูปแฟนถ่ายที่หอใหม่ผ่านกระจก
     'https://cloud.ex10.tech/public/filestore/000052-8a5803f7-6bec-11ed-9e09-66fa461cc060.jpg', //รูปแฟนที่ถ่ายจวยครั้งแรก
-    'https://cloud.ex10.tech/public/filestore/000054-956b4f54-6bec-11ed-9e09-66fa461cc060.jpg' //รูปแฟนที่ถ่ายไดโนเสาร์ที่ระเบียง
+    'https://cloud.ex10.tech/public/filestore/000054-956b4f54-6bec-11ed-9e09-66fa461cc060.jpg', //รูปแฟนที่ถ่ายไดโนเสาร์ที่ระเบียง
+    'https://cloud.ex10.tech/public/filestore/000001-f2282c5d-70d4-11ed-925c-16ded413dc0f.jpg', //รูปตาต้นทำท่าหัวใจ
+    'https://cloud.ex10.tech/public/filestore/000002-05ac4704-70d5-11ed-925c-16ded413dc0f.jpg', //รูปตาต้นกับพิมถ่ายรูปคู่กัน
+    'https://cloud.ex10.tech/public/filestore/000003-1151b262-70d5-11ed-925c-16ded413dc0f.jpg', //รูปที่พิมถ่ายหน้ากระจกโดยใช้แฟลช
+    'https://cloud.ex10.tech/public/filestore/000004-1e09c913-70d5-11ed-925c-16ded413dc0f.jpg', //รูปที่พิมถ่าย พิมชอบรูปนี้
+    'https://cloud.ex10.tech/public/filestore/000006-2b6dcaa3-70d5-11ed-925c-16ded413dc0f.jpg', //รูปที่พิมแวะกินกาแฟแล้วถ่ายรูป
+    'https://cloud.ex10.tech/public/filestore/000037-390a2163-70d5-11ed-925c-16ded413dc0f.jpg', //พิมไปกินคอกเทลแบบเท่ๆ
+    'https://cloud.ex10.tech/public/filestore/000038-4484fc7e-70d5-11ed-925c-16ded413dc0f.jpg', //พิมไปกินคอกเทลแบบเท่ๆ v.2
+    'https://cloud.ex10.tech/public/filestore/000047-4fd53420-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับหมอน 149 บาท
+    'https://cloud.ex10.tech/public/filestore/000050-594e913e-70d5-11ed-925c-16ded413dc0f.jpg', //รูปที่ถ่ายพร้อมเพื่อนๆ
+    'https://cloud.ex10.tech/public/filestore/000051-626ae766-70d5-11ed-925c-16ded413dc0f.jpg', //ถ่ายกับกระจอกที่อิเกีย
+    'https://cloud.ex10.tech/public/filestore/000052-6c2153db-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับรถเข็นที่อิเกีย
+    'https://cloud.ex10.tech/public/filestore/000053-767b887e-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับรถเข็นที่อิเกียแนวตั้ง
+    'https://cloud.ex10.tech/public/filestore/000056-8046bfe5-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับหมีขนนุ่มมมมม
+    'https://cloud.ex10.tech/public/filestore/000059-89e35bc0-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับรูปที่ถ่ายหน้ากระจกที่อิเกีย
 ]
 const NameNumber = [
     'ถ่ายคู่หน้ากระจก',
@@ -11,6 +25,20 @@ const NameNumber = [
     'รูปแฟนถ่ายที่หอใหม่ผ่านกระจก',
     'รูปแฟนที่ถ่ายจวยครั้งแรก',
     'รูปแฟนที่ถ่ายไดโนเสาร์ที่ระเบียง',
+    'รูปตาต้นทำท่าหัวใจ',
+    'รูปตาต้นกับพิมถ่ายรูปคู่กัน',
+    'รูปที่พิมถ่ายหน้ากระจกโดยใช้แฟลช',
+    'รูปที่พิมถ่าย พิมชอบรูปนี้',
+    'รูปที่พิมแวะกินกาแฟแล้วถ่ายรูป',
+    'พิมไปกินคอกเทลแบบเท่ๆ',
+    'พิมไปกินคอกเทลแบบเท่ๆ v.2',
+    'พิมกับหมอน 149 บาท',
+    'รูปที่ถ่ายพร้อมเพื่อนๆ',
+    'ถ่ายกับกระจอกที่อิเกีย',
+    'พิมกับรถเข็นที่อิเกีย',
+    'พิมกับรถเข็นที่อิเกียแนวตั้ง',
+    'พิมกับหมีขนนุ่มมมมม',
+    'พิมกับรูปที่ถ่ายหน้ากระจกที่อิเกีย'
 ]
 
 function randomPicture(){
@@ -62,7 +90,7 @@ function randomPicture(){
     },
     sender: {
             name: "น้องต้น",
-            iconUrl: "https://cloud.ex10.tech/public/filestore/sender-42eb0259-6b3f-11ed-9be1-aa45cb77b437.jpg"
+            iconUrl: "https://cloud.ex10.tech/public/filestore/000001-f2282c5d-70d4-11ed-925c-16ded413dc0f.jpg"
             },
     quickReply: {
         items: [
