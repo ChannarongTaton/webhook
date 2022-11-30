@@ -28,18 +28,15 @@ router.use(async (req, res, next) => {
                 .then(response => {
                     return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
                 })
-                res.send(event.message.text)
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
-                await lineClient.replyMessage(event.replyToken, sendLaterTotaton).then(response => {
+                await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
+                .then(response => {
                     return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
                 })
-                res.send(event.message.text)
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
                 await lineClient.replyMessage(event.replyToken, randomPicture())
-                res.send(event.message.text)
             } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
                 await lineClient.replyMessage(event.replyToken, randomPicture())
-                res.send(event.message.text)
             }
         }
     });
