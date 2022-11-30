@@ -17,48 +17,30 @@ const config = {
 const lineClient = new line.Client(config)
 
 router.use(async (req, res, next) => {
-    const events = req.body.events
-    console.log(events);
-    events.forEach(async event => {
-        // if(event.type === "message") {
-        //     if (event.message.type !== 'text') {
-        //         return
-        //     } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
-        //         await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
-        //         .then(response => {
-        //             return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
-        //         })
-        //     } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
-        //         await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
-        //         .then(response => {
-        //             return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
-        //         })
-        //     } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
-        //         await lineClient.replyMessage(event.replyToken, randomPicture())
-        //     } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
-        //         await lineClient.replyMessage(event.replyToken, randomPicture())
-        //     }
-        // }
-        while(event.type === "message"){
-            if (event.message.type !== 'text') {
-                return
-            } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
-                await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
-                .then(response => {
-                    return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
-                })
-            } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
-                await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
-                .then(response => {
-                    return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
-                })
-            } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
-                await lineClient.replyMessage(event.replyToken, randomPicture())
-            } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
-                await lineClient.replyMessage(event.replyToken, randomPicture())
-            }
+    const event = req.body.events
+    console.log(event);
+    if(event.type === "message") {
+        if (event.message.type !== 'text') {
+            return
+        } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
+            await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
+            .then(response => {
+                return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
+            })
+        } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
+            await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
+            .then(response => {
+                return lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
+            })
+        } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
+            await lineClient.replyMessage(event.replyToken, randomPicture())
+        } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
+            await lineClient.replyMessage(event.replyToken, randomPicture())
         }
-    });
+    }
+    // events.forEach(async event => {
+
+    // });
     res.status(200).send(req.method)
 })
 
