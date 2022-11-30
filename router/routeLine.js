@@ -16,29 +16,31 @@ const config = {
 
 const lineClient = new line.Client(config)
 
-router.use(async (req, res, next) => {
-    const event = req.body.events
-    console.log(event);
-    if(event.type === "message") {
-        if (event.message.type !== 'text') {
-            return
-        } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
-            await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
-            await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
-        } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
-            await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
-            await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
-        } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
-            await lineClient.replyMessage(event.replyToken, randomPicture())
-        } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
-            await lineClient.replyMessage(event.replyToken, randomPicture())
+router.use((req, res, next) => {
+    const events = req.body.events
+    console.log(events);
+    events.forEach(async event => {
+        if(event.type === "message") {
+            if (event.message.type !== 'text') {
+                return
+            } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'กินแล้วค้าบบบ') {
+                await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
+                await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
+                res.json({ message : "กินแล้วค้าบบบ"})
+            } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
+                await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
+                await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
+                res.json({ message : "ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ"})
+            } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
+                await lineClient.replyMessage(event.replyToken, randomPicture())
+            } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
+                await lineClient.replyMessage(event.replyToken, randomPicture())
+                res.json({ message : "รูป ตาต้น"})
+            }
+        } else {
+            res.json({message:"HELLO"})
         }
-    } else {
-        res.json({message:"HELLO"})
-    }
-    // events.forEach(event => {
-
-    // });
+    });
 })
 
 module.exports = router
