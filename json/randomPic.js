@@ -13,7 +13,7 @@ const arraypic = [
     'https://cloud.ex10.tech/public/filestore/000038-4484fc7e-70d5-11ed-925c-16ded413dc0f.jpg', //พิมไปกินคอกเทลแบบเท่ๆ v.2
     'https://cloud.ex10.tech/public/filestore/000047-4fd53420-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับหมอน 149 บาท
     'https://cloud.ex10.tech/public/filestore/000050-594e913e-70d5-11ed-925c-16ded413dc0f.jpg', //รูปที่ถ่ายพร้อมเพื่อนๆ
-    'https://cloud.ex10.tech/public/filestore/000051-626ae766-70d5-11ed-925c-16ded413dc0f.jpg', //ถ่ายกับกระจอกที่อิเกีย
+    'https://cloud.ex10.tech/public/filestore/000051-626ae766-70d5-11ed-925c-16ded413dc0f.jpg', //ถ่ายกับกระจกที่อิเกีย
     'https://cloud.ex10.tech/public/filestore/000052-6c2153db-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับรถเข็นที่อิเกีย
     'https://cloud.ex10.tech/public/filestore/000053-767b887e-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับรถเข็นที่อิเกียแนวตั้ง
     'https://cloud.ex10.tech/public/filestore/000056-8046bfe5-70d5-11ed-925c-16ded413dc0f.jpg', //พิมกับหมีขนนุ่มมมมม
@@ -34,7 +34,7 @@ const NameNumber = [
     'พิมไปกินคอกเทลแบบเท่ๆ v.2',
     'พิมกับหมอน 149 บาท',
     'รูปที่ถ่ายพร้อมเพื่อนๆ',
-    'ถ่ายกับกระจอกที่อิเกีย',
+    'ถ่ายกับกระจกที่อิเกีย',
     'พิมกับรถเข็นที่อิเกีย',
     'พิมกับรถเข็นที่อิเกียแนวตั้ง',
     'พิมกับหมีขนนุ่มมมมม',
@@ -90,7 +90,7 @@ function randomPicture(){
     },
     sender: {
             name: "น้องต้น",
-            iconUrl: "https://cloud.ex10.tech/public/filestore/000001-f2282c5d-70d4-11ed-925c-16ded413dc0f.jpg"
+            iconUrl: "https://cloud.ex10.tech/public/filestore/S__34398265-67756733-70d7-11ed-925c-16ded413dc0f.jpg"
             },
     quickReply: {
         items: [
@@ -109,14 +109,101 @@ function randomPicture(){
             action: {
                 type: "message",
                 label: "*อ่าน*",
-                text: "*มีแค่ 5 รูปอยู่กำลังพยายามอัพอยู่นะ 😁\n นั่งทำทั้งวันเลยกว่าจะได้อันนี้\n 55555 😘✌️ ทำงานสู้ๆนะครับแฟน"
+                text: "*ตอนนี้เพิ่มให้เป็น 19 รูปแล้วนะครับ 😁\n 😘✌️ ทำงานสู้ๆนะครับแฟน"
             }
             }
         ]
         }
     
     }
+    let Ojb2 = {
+        type: "flex",
+        contents: {
+            type: "carousel",
+            contents: [
+            {
+                type: "bubble",
+                direction: "ltr",
+                header: {
+                type: "box",
+                layout: "vertical",
+                backgroundColor: "#006CFFFF",
+                contents: [
+                    {
+                    type: "text",
+                    text: `มาดูรูปกันเถอะ`,
+                    weight: "bold",
+                    color: "#FFFFFFFF",
+                    align: "center",
+                    contents: []
+                    }
+                ]
+                },
+                hero: {
+                type: "image",
+                url: `${arraypic[5]}`,
+                size: "full",
+                aspectRatio: "1.51:1",
+                aspectMode: "fit"
+                },
+                body: {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                    {
+                    type: "text",
+                    text: `${NameNumber[5]}`,
+                    weight: "bold",
+                    align: "center",
+                    contents: []
+                    }
+                ]
+                }
+            },
+            {
+                type: "bubble",
+                direction: "ltr",
+                header: {
+                type: "box",
+                layout: "vertical",
+                backgroundColor: "#006CFFFF",
+                contents: [
+                    {
+                    type: "text",
+                    text: `มาดูรูปกันเถอะ`,
+                    weight: "bold",
+                    color: "#FFFFFFFF",
+                    align: "center",
+                    contents: []
+                    }
+                ]
+                },
+                hero: {
+                type: "image",
+                url: `${arraypic[6]}`,
+                size: "full",
+                aspectRatio: "1.51:1",
+                aspectMode: "fit"
+                },
+                body: {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                    {
+                    type: "text",
+                    text: `${NameNumber[6]}`,
+                    weight: "bold",
+                    align: "center",
+                    contents: []
+                    }
+                ]
+                }
+            },
+            ]
+        }
+    }
     return Ojb
+
 }
 
 function random(){

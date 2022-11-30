@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const line = require('@line/bot-sdk')
-const cron = require('node-cron')
 const sendAcceptToTaton = require('../json/tatonq/sendAcceptToTaton.json')
 const sendLaterTotaton = require('../json/tatonq/sendLaterToTaton.json')
 const textAcceptPim = require('../json/pimpim/textAcceptPim.json')
