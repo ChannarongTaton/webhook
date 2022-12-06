@@ -5,7 +5,7 @@ const sendAcceptToTaton = require('../json/tatonq/sendAcceptToTaton.json')
 const sendLaterTotaton = require('../json/tatonq/sendLaterToTaton.json')
 const textAcceptPim = require('../json/pimpim/textAcceptPim.json')
 const textLaterPim = require('../json/pimpim/textLaterPim.json')
-let randomPic, { random, randomPicture } = require('../json/randomPic')
+let randomPic, { reminderTakeMedicine, randomPicture } = require('../json/randomPic')
 require('dotenv').config()
 
 const config = {
@@ -33,13 +33,14 @@ router.use((req, res, next) => {
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'รูป') {
                 await lineClient.replyMessage(event.replyToken, randomPicture())
             } else if (event.source.userId === `${process.env.USER_ID_TATON}` && event.message.text === 'รูป') {
-                await lineClient.replyMessage(event.replyToken, randomPicture())
+                await lineClient.replyMessage(event.replyToken, [randomPicture()])
                 res.send({ message : "รูป ตาต้น"})
             }
         } else {
-            res.json({message:"HELLO"})
+            return res.status(200)
         }
     });
+    // return res.send(req.method)
 })
 
 module.exports = router
