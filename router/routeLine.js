@@ -41,7 +41,7 @@ router.use((req, res, next) => {
                 res.send({ message : "รูป ตาต้น"})
             } else if (event.message.text === 'sunny') {
                 const message = {
-                    type: text,
+                    type: "text",
                     text: "รอรับภาพจากกล้องในห้อง"
                 }
                 clientMqtt.publish(process.env.MQTT_TOPIC, process.env.MQTT_MESSAGE)
