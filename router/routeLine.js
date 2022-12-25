@@ -29,7 +29,7 @@ router.use((req, res, next) => {
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'กินแล้วค้าบบบ') {
                 await lineClient.replyMessage(event.replyToken, sendAcceptToTaton)
                 await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textAcceptPim)
-                res.send()
+                res.send() 
             } else if (event.source.userId === `${process.env.USER_ID_BABE}` && event.message.text === 'ยังไม่ได้กินเลย บอทกลับมาเตือนอีกรอบนะ') {
                 await lineClient.replyMessage(event.replyToken, sendLaterTotaton)
                 await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, textLaterPim)
@@ -46,6 +46,7 @@ router.use((req, res, next) => {
                 }
                 clientMqtt.publish(process.env.MQTT_TOPIC, process.env.MQTT_MESSAGE)
                 await lineClient.replyMessage(event.replyToken, message)
+                res.send()
             }
         } else {
             return res.status(200)
