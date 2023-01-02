@@ -27,11 +27,10 @@ var splitTimeMoment = moment().format('LT').split('', 2)
 let splitTime = currentTime.split('', 2)
 router.use( async (req, res) => {
     console.log(req.method);
-    console.log("ธรรมดา", splitTime[0], splitTime[1]);
-    console.log("โมเม้น", splitTimeMoment[0], splitTimeMoment[1]);
-    if(req.method == 'GET' && splitTimeMoment[0] == '1' && splitTimeMoment[1] == '7') {
+    console.log("ธรรมดา", splitTime[0]+splitTime[1]);
+    console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
+    if(req.method == 'GET' && splitTime[0] == '6') {
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
-        // res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
         res.json({message: `${splitTimeMoment[0]}, ${splitTimeMoment[1]}`})
     }
     if(req.method == 'GET' && splitTime[0] == '9') {
