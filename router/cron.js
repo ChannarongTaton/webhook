@@ -25,11 +25,12 @@ var localTime = formatter.format(new Date(UTCTime));
 var currentTime = formatter.format(new Date());
 var splitTimeMoment = moment().format('LT').split('', 2)
 let splitTime = currentTime.split('', 2)
+console.log(currentTime);
 router.use( async (req, res) => {
     console.log(req.method);
     console.log("ธรรมดา", splitTime[0]+splitTime[1]);
     console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
-    if(req.method == 'GET' && splitTime[0] == '6') {
+    if(req.method == 'GET' && splitTime[0] == '5') {
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
         res.json({message: `${splitTimeMoment[0]}, ${splitTimeMoment[1]}`})
     }
