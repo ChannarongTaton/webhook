@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 const line = require('@line/bot-sdk')
 const { reminderTakeMedicine } = require('../json/randomPic')
+const moment = require('moment')
 require('dotenv').config()
 
+moment.locale('th')
 const config = {
     channelAccessToken: `${process.env.CHANNEL_ACCESS_TOKEN}`,
     channelSecret: `${process.env.CHANNEL_SECRET}`
@@ -21,15 +23,16 @@ var formatter = new Intl.DateTimeFormat([], options);
 var UTCTime = date;
 var localTime = formatter.format(new Date(UTCTime));
 var currentTime = formatter.format(new Date());
-
+var splitTimeMoment = moment().format('LT').split('', 2)
 let splitTime = currentTime.split('', 2)
 router.use( async (req, res) => {
     console.log(req.method);
-    console.log(splitTime[0], splitTime[1]);
-    if(req.method == 'GET' && splitTime[0] == '1'&& splitTime[1] == '7') {
+    console.log("ธรรมดา", splitTime[0], splitTime[1]);
+    console.log("โมเม้น", splitTimeMoment[0], splitTimeMoment[1]);
+    if(req.method == 'GET' && splitTimeMoment[0] == '1' && splitTimeMoment[1] == '7') {
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
         // res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
-        res.json({message: "Hello"})
+        res.json({message: `${splitTimeMoment[0]}, ${splitTimeMoment[1]}`})
     }
     if(req.method == 'GET' && splitTime[0] == '9') {
         console.log(`จาก ${req.method}`);
