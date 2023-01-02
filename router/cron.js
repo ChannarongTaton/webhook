@@ -43,7 +43,7 @@ router.use( async (req, res) => {
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
         })
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
-        res.json({message: `${hour}` + ":" + `${min}`})
+        res.end()
     } else {
         res.json({message:"HELLO"})
     }
