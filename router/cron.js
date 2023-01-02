@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const line = require('@line/bot-sdk')
-const mainFlex = require('../json/MainFlexSender.json')
+const { reminderTakeMedicine } = require('../json/randomPic')
 require('dotenv').config()
 
 const config = {
@@ -23,10 +23,14 @@ var localTime = formatter.format(new Date(UTCTime));
 var currentTime = formatter.format(new Date());
 
 let splitTime = currentTime.split('', 2)
-console.log(currentTime);
 router.use( async (req, res) => {
     console.log(req.method);
-    console.log(splitTime[0]);
+    console.log(splitTime[0], splitTime[1]);
+    if(req.method == 'GET' && splitTime[0] == '1'&& splitTime[1] == '7') {
+        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
+        // res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
+        res.json({message: "Hello"})
+    }
     if(req.method == 'GET' && splitTime[0] == '9') {
         console.log(`จาก ${req.method}`);
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
@@ -34,8 +38,8 @@ router.use( async (req, res) => {
             "type": "text",
             "text": `ตื่นมาแจ้งเตือนแล้ว`,
         })
-        await lineClient.pushMessage(`${process.env.USER_ID_BABE}`, mainFlex)
-        res.json({message: `${hour}` + ":" + `${min}` + ":" + `${sec}`})
+        await lineClient.pushMessage(`${process.env.USER_ID_BABE}`, reminderTakeMedicine())
+        res.json({message: `${hour}` + ":" + `${min}`})
     } else {
         res.json({message:"HELLO"})
     }

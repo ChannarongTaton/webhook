@@ -1,3 +1,5 @@
+const moment = require('moment')
+moment.locale('th');
 const arrayOjb1 = [
     {
         image: "https://cloud.ex10.tech/public/filestore/000051-75c9a8a6-6a8d-11ed-bd62-3e71409b01a1.jpg",
@@ -197,7 +199,7 @@ function reminderTakeMedicine(){
     }
     let Ojb = {
         type: "flex",
-        altText: "แจ้งเตือนการกินยา",
+        altText: `แจ้งเตือนการกินยาประจำวันที่ ${moment().format('LL')}`,
         contents: {
         type: "bubble",
         direction: "ltr",
@@ -208,7 +210,7 @@ function reminderTakeMedicine(){
         contents: [
             {
             type: "text",
-            text: "วันนี้กินยารึยัง?",
+            text: `แจ้งเตือนการกินยา ${moment().format('ll')}`,
             weight: "bold",
             color: "#FFFFFFFF",
             align: "center",
@@ -218,7 +220,7 @@ function reminderTakeMedicine(){
         },
         hero: {
         type: "image",
-        url: `${arrayOjb1[Number].image}`,
+        url: `${arrayOjb2[Number].image}`,
         size: "full",
         aspectRatio: "1.51:1",
         aspectMode: "fit"
@@ -229,7 +231,7 @@ function reminderTakeMedicine(){
         contents: [
             {
             type: "text",
-            text: `${arrayOjb1[Number].nameImage}`,
+            text: `${arrayOjb2[Number].nameImage}`,
             weight: "bold",
             align: "center",
             contents: []
@@ -239,7 +241,7 @@ function reminderTakeMedicine(){
     },
     sender: {
             name: "น้องต้น",
-            iconUrl: "https://cloud.ex10.tech/public/filestore/sender-42eb0259-6b3f-11ed-9be1-aa45cb77b437.jpg"
+            iconUrl: "https://cloud.ex10.tech/public/filestore/capture-e46ab774-8a83-11ed-ae28-be141c92f92e.jpg"
             },
     quickReply: {
         items: [
