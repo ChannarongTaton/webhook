@@ -30,7 +30,7 @@ router.use( async (req, res) => {
     console.log("ธรรมดา", splitTime[0]+splitTime[1]);
     console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
     console.log(currentTime);
-    if(req.method == 'GET' && splitTime[0] == '8') {
+    if(req.method == 'GET' && splitTime[0] == '7') {
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
         res.json({message: `${splitTimeMoment[0]}, ${splitTimeMoment[1]}`})
     }
