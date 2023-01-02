@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const line = require('@line/bot-sdk')
 const { reminderTakeMedicine } = require('../json/randomPic')
+const mainflex = require('../json/MainFlexSender.json')
 const moment = require('moment')
 require('dotenv').config()
 
@@ -31,8 +32,8 @@ router.use( async (req, res) => {
     console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
     console.log(currentTime);
     if(req.method == 'GET' && splitTime[0] == '8') {
-        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
-        res.json({message: `${splitTimeMoment[0]}, ${splitTimeMoment[1]}`})
+        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, mainflex)
+        res.json({message: `${splitTimeMoment[0]}`})
     }
     if(req.method == 'GET' && splitTime[0] == '9') {
         console.log(`จาก ${req.method}`);
