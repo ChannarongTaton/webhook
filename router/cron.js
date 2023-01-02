@@ -32,21 +32,16 @@ router.use( async (req, res) => {
     console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
     console.log(currentTime);
     if(req.method == 'GET' && splitTime[0] == '9') {
-        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`, reminderTakeMedicine())
+        console.log(`จาก ${req.method}`);
+        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
+        {
+            "type": "text",
+            "text": `ตื่นมาแจ้งเตือนแล้ว`,
+        })
+        await lineClient.pushMessage(`${process.env.USER_ID_BABE}`, reminderTakeMedicine())
         res.end()
-    }
-    // if(req.method == 'GET' && splitTime[0] == '9') {
-    //     console.log(`จาก ${req.method}`);
-    //     await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
-    //     {
-    //         "type": "text",
-    //         "text": `ตื่นมาแจ้งเตือนแล้ว`,
-    //     })
-    //     await lineClient.pushMessage(`${process.env.USER_ID_BABE}`, reminderTakeMedicine())
-    //     res.end()
-    // } 
-    else {
-        res.json({message:"HELLO"})
+    } else {
+        res.end()
     }
 })
 
