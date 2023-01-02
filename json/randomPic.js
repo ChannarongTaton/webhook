@@ -193,9 +193,9 @@ function randomPicture(){
 }
 
 function reminderTakeMedicine(){
-    let Number = Math.floor(Math.random()*arrayOjb1.length)
+    let Number = Math.floor(Math.random()*arrayOjb2.length)
     if (Number === Number) {
-        let Number = Math.floor(Math.random()*arrayOjb1.length)
+        let Number = Math.floor(Math.random()*arrayOjb2.length)
     }
     let Ojb = {
         type: "flex",
