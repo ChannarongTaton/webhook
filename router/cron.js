@@ -6,7 +6,6 @@ const mainflex = require('../json/MainFlexSender.json')
 const moment = require('moment')
 require('dotenv').config()
 
-moment.locale('th')
 const config = {
     channelAccessToken: `${process.env.CHANNEL_ACCESS_TOKEN}`,
     channelSecret: `${process.env.CHANNEL_SECRET}`
@@ -26,6 +25,7 @@ var localTime = formatter.format(new Date(UTCTime));
 var currentTime = formatter.format(new Date());
 let splitTime = currentTime.split('', 6)
 router.use( async (req, res) => {
+    moment.locale('th')
     var splitTimeMoment = moment().format('LT').split('', 2)
     // console.log(splitTime);
     // console.log(req.method);
