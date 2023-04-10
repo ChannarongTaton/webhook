@@ -15,7 +15,7 @@ const lineClient = new line.Client(config)
 
 router.use( async (req, res) => {
     moment.locale('th')
-    var splitTimeMoment = moment().format('LT').split('', 1)
+    var splitTimeMoment = moment().format('LT').split('', 6)
     console.log('================');
     console.log(splitTimeMoment);
     if(req.method == 'GET' && splitTimeMoment[0] == '1' && splitTimeMoment[1] == '3') {
