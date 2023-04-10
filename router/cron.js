@@ -10,39 +10,23 @@ const config = {
     channelAccessToken: `${process.env.CHANNEL_ACCESS_TOKEN}`,
     channelSecret: `${process.env.CHANNEL_SECRET}`
 }
-var date = new Date()
+
 const lineClient = new line.Client(config)
 
-var options = {
-    timeZone: "Asia/Jakarta",
-    hour: 'numeric', minute: 'numeric'
-};
-
-var formatter = new Intl.DateTimeFormat([], options);
-
-var UTCTime = date;
-var localTime = formatter.format(new Date(UTCTime));
-var currentTime = formatter.format(new Date());
-let splitTime = currentTime.split('', 6)
 router.use( async (req, res) => {
     moment.locale('th')
-    var splitTimeMoment = moment().format('LT').split('', 2)
-    // console.log(splitTime);
-    // console.log(req.method);
-    // console.log(splitTime[0]+splitTime[1]+":"+splitTime[3]+splitTime[4]);
+    var splitTimeMoment = moment().format('h:mm').split('', 2)
     console.log('================');
+    console.log(moment.locale('th'));
     console.log(splitTimeMoment);
-    // console.log("ธรรมดา", splitTime[0]+splitTime[1]+':'+splitTime[4]+splitTime[5]);
-    // console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
-    // console.log(currentTime);
-    if(req.method == 'GET' && splitTimeMoment[0] == '2' && splitTimeMoment[1] == '0') {
+    if(req.method == 'GET' && splitTimeMoment[0] == '8') {
         console.log(`จาก ${req.method}`);
-        await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
-        {
-            "type": "text",
-            "text": `ตื่นมาแจ้งเตือนแล้ว`,
-        })
-        await lineClient.pushMessage(`${process.env.USER_ID_BABE}`, reminderTakeMedicine())
+        // await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
+        // {
+        //     "type": "text",
+        //     "text": `ตื่นมาแจ้งเตือนแล้ว`,
+        // })
+        // await lineClient.pushMessage(`${process.env.USER_ID_BABE}`, reminderTakeMedicine())
         res.end()
     } else {
         res.end()
