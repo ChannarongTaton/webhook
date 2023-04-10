@@ -24,17 +24,18 @@ var formatter = new Intl.DateTimeFormat([], options);
 var UTCTime = date;
 var localTime = formatter.format(new Date(UTCTime));
 var currentTime = formatter.format(new Date());
-var splitTimeMoment = moment().format('LT').split('', 2)
 let splitTime = currentTime.split('', 6)
 router.use( async (req, res) => {
-    console.log(splitTime);
-    console.log(req.method);
-    console.log(splitTime[0]+splitTime[1]+":"+splitTime[3]+splitTime[4]);
+    var splitTimeMoment = moment().format('LT').split('', 2)
+    // console.log(splitTime);
+    // console.log(req.method);
+    // console.log(splitTime[0]+splitTime[1]+":"+splitTime[3]+splitTime[4]);
     console.log('================');
+    console.log(splitTimeMoment);
     // console.log("ธรรมดา", splitTime[0]+splitTime[1]+':'+splitTime[4]+splitTime[5]);
     // console.log("โมเม้น", splitTimeMoment[0]+splitTimeMoment[1]);
     // console.log(currentTime);
-    if(req.method == 'GET' && splitTime[0] == '8') {
+    if(req.method == 'GET' && splitTimeMoment[0] == '2' && splitTimeMoment[1] == '0') {
         console.log(`จาก ${req.method}`);
         await lineClient.pushMessage(`${process.env.USER_ID_TATON}`,
         {
